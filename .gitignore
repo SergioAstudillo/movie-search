@@ -105,9 +105,9 @@ dist
 
 # Others
 .gitignore
-.eslintignore
-.eslintrc
-.prettierrc# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.eslintignore*
+.eslintrc*
+.prettierrc*
 
 # dependencies
 /node_modules
