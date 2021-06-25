@@ -108,6 +108,7 @@ dist
 .eslintignore*
 .eslintrc*
 .prettierrc*
+.vscode*
 
 # dependencies
 /node_modules

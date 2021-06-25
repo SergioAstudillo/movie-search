@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 
-
 const searchMoviesForm: React.FC = () => {
 	const [query, setQuery] = useState('');
+	const [movies, setMovies] = useState([{}]);
+	const [results, setResults] = useState(0);
 
-	const theMovieDBAPI: string = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&page=1&language=en-US&query=${query}&include_adult=false`
+	const theMovieDBAPI: string = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&query=${query}&include_adult=false`;
 
 	async function onSubmitHandler(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		try {
 			const res = await fetch(theMovieDBAPI);
-			const data = await res.json()
-			console.log(data)
+			const data = await res.json();
+			setMovies(data.results);
+			setResults(data.total_results);
 		} catch (error) {
-			console.error(error)
+			console.error(error);
 		}
 	}
 
 	function onChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
-		setQuery(event.target.value)
+		setQuery(event.target.value);
 	}
 
 	return (
@@ -44,7 +46,25 @@ const searchMoviesForm: React.FC = () => {
 					Search
 				</button>
 			</form>
+			<section>
+				<p>Results found: {results}</p>
+				{movies
+					.filter((movie: any) => movie.poster_path)
+					.map((movie: any, index: number) => (
+						<div className={`movie-${index}`} key={movie.id}>
+							<img
+								alt={`${movie.title} poster.`}
+								src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
+							/>
+							<h1>{movie.title}</h1>
+							{/* Release Date Format = YYYY-MM-DD */}
+							<p>Release Date: {movie.release_date}</p>
+							<p>Rating: {movie.vote_average}</p>
+							<p>{movie.overview}</p>
+						</div>
+					))}
+			</section>
 		</section>
-		);
-}
+	);
+};
 export default searchMoviesForm;
