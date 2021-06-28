@@ -1,17 +1,41 @@
 import React, { useState } from 'react';
+/* import MoviesResult from '../moviesResult'; */
 
-const searchMoviesForm: React.FC = () => {
+const SearchMoviesForm: React.FC = () => {
 	const [query, setQuery] = useState('');
-	const [movies, setMovies] = useState([{}]);
+	const [movies, setMovies] = useState<object[]>([{ initializer: '' }]);
 	const [results, setResults] = useState(0);
 
 	const theMovieDBAPI: string = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&query=${query}&include_adult=false`;
 
+	interface Results {
+		adult: boolean;
+		backdrop_path: string;
+		genre_ids?: number[];
+		id: 10283;
+		original_language?: string;
+		original_title: string;
+		overview: string;
+		popularity: number;
+		poster_path: string;
+		release_date: string;
+		title: string;
+		video: boolean;
+		vote_average: number;
+		vote_count: number;
+	}
+	interface Data {
+		page: number;
+		results: Array<Results>;
+		total_pages: number;
+		total_results: number;
+	}
+
 	async function onSubmitHandler(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		try {
-			const res = await fetch(theMovieDBAPI);
-			const data = await res.json();
+			const res: Response = await fetch(theMovieDBAPI);
+			const data: Data = await res.json();
 			setMovies(data.results);
 			setResults(data.total_results);
 		} catch (error) {
@@ -67,4 +91,4 @@ const searchMoviesForm: React.FC = () => {
 		</section>
 	);
 };
-export default searchMoviesForm;
+export default SearchMoviesForm;
