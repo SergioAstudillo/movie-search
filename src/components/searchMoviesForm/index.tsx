@@ -1,4 +1,6 @@
+/* Imports React, useState, the children component and the interfaces. */
 import React, { useState } from 'react';
+import FoundMovies, { Results, Data } from '../foundMovies';
 
 const SearchMoviesForm: React.FC = () => {
 	/* Creation of the states. */
@@ -8,30 +10,6 @@ const SearchMoviesForm: React.FC = () => {
 
 	/* Personal string to access the movie DB API. We will use it later on line 46. */
 	const theMovieDBAPI: string = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&query=${query}&include_adult=false`;
-
-	/* Creation of the interfaces for the data returned from the fetch. */
-	interface Results {
-		adult: boolean;
-		backdrop_path: string | null;
-		genre_ids: number[] | [];
-		id: number;
-		original_language: string;
-		original_title: string;
-		overview: string;
-		popularity: number;
-		poster_path: string | null;
-		release_date: string;
-		title: string;
-		video?: boolean;
-		vote_average: number;
-		vote_count: number;
-	}
-	interface Data {
-		page: number;
-		results: Array<Results>;
-		total_pages: number;
-		total_results: number;
-	}
 
 	/* This function will be called each time the user presses the "Search" button. (Sends the form) */
 	async function onSubmitHandler(event: React.FormEvent<HTMLFormElement>) {
@@ -58,18 +36,6 @@ const SearchMoviesForm: React.FC = () => {
 		setQuery(event.target.value);
 	}
 
-	/* This function checks the results. In case the results fills more than a page (20 results) it will tell the user.  */
-	function checkPages() {
-		if (results > 20) {
-			const JSXResults: JSX.Element = (
-				<p>Results found: {results}. Only showing the first 20.</p>
-			);
-			return JSXResults;
-		}
-		const JSXResults: JSX.Element = <p>Results found: {results}.</p>;
-		return JSXResults;
-	}
-
 	return (
 		<section className='w-screen'>
 			<form onSubmit={onSubmitHandler}>
@@ -93,24 +59,7 @@ const SearchMoviesForm: React.FC = () => {
 					Search
 				</button>
 			</form>
-			<section>
-				{checkPages()}
-				{movies
-					.filter((movie: Results) => movie.poster_path)
-					.map((movie: Results, index: number) => (
-						<div className={`movie-${index}`} key={movie.id}>
-							<img
-								alt={`${movie.title} poster.`}
-								src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-							/>
-							<h1>{movie.title}</h1>
-							{/* Release Date Format = YYYY-MM-DD */}
-							<p>Release Date: {movie.release_date}</p>
-							<p>Rating: {movie.vote_average}</p>
-							<p>{movie.overview}</p>
-						</div>
-					))}
-			</section>
+			<FoundMovies results={results} movies={movies} />
 		</section>
 	);
 };
