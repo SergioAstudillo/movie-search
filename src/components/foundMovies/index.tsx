@@ -28,11 +28,11 @@ export interface Data {
 type Props = {
 	results: number;
 	movies: Results[];
+	firstSearch: boolean;
 };
 
 const FoundMovies: React.FC<Props> = (props) => {
-	const { results, movies } = props;
-
+	const { results, movies, firstSearch } = props;
 	/* This function checks the results. In case the results fills more than a page (20 results) it will tell the user.  */
 	function checkPages() {
 		if (results > 20) {
@@ -43,12 +43,16 @@ const FoundMovies: React.FC<Props> = (props) => {
 			);
 			return JSXResults;
 		}
-		if (results === 0) {
+		if (results === 0 && !firstSearch) {
 			const JSXResults: JSX.Element = (
 				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 lg:block'>
 					No movies found. Check the movie name.
 				</p>
 			);
+			return JSXResults;
+		}
+		if (results === 0 && firstSearch) {
+			const JSXResults: JSX.Element = <></>;
 			return JSXResults;
 		}
 		const JSXResults: JSX.Element = (

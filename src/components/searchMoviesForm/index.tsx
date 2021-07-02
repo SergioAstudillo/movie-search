@@ -7,6 +7,7 @@ const SearchMoviesForm: React.FC = () => {
 	const [query, setQuery] = useState('');
 	const [movies, setMovies] = useState<Results[]>([]);
 	const [results, setResults] = useState(0);
+	const [firstSearch, setFirstSearch] = useState(true);
 
 	/* Personal string to access the movie DB API. We will use it later on line 46. */
 	const theMovieDBAPI: string = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&query=${query}&include_adult=false`;
@@ -21,6 +22,7 @@ const SearchMoviesForm: React.FC = () => {
 			} else {
 				/* In case the input has a value different than '' it will clear the console, execute the fetch and update the results and movies states. */
 				console.clear();
+				setFirstSearch(false);
 				const res: Response = await fetch(theMovieDBAPI);
 				const data: Data = await res.json();
 				setMovies(data.results);
@@ -65,7 +67,11 @@ const SearchMoviesForm: React.FC = () => {
 					Search
 				</button>
 			</form>
-			<FoundMovies results={results} movies={movies} />
+			<FoundMovies
+				results={results}
+				movies={movies}
+				firstSearch={firstSearch}
+			/>
 		</section>
 	);
 };
