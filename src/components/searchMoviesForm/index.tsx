@@ -42,10 +42,10 @@ const SearchMoviesForm: React.FC = () => {
 				<h1 className='my-4 text-3xl text-center w-full text-black font-bold underline'>
 					Movie Search App
 				</h1>
-				<div className='w-full'>
+				<div className='w-3/4 mx-auto'>
 					<label
 						htmlFor='movieSearchBar'
-						className='text-left mx-12 my-1 text-sm uppercase'
+						className='block text-left mx-auto my-1 text-sm uppercase'
 					>
 						Movie Name
 					</label>
@@ -55,7 +55,7 @@ const SearchMoviesForm: React.FC = () => {
 						placeholder='e.g. Avatar'
 						value={query}
 						onChange={onChangeHandler}
-						className='block w-3/4 mx-auto text-left border-3 border-gray-800 bg-white pl-4 py-2 rounded-3xl leading-2'
+						className='w-full mx-auto text-left border-3 border-gray-800 bg-white pl-4 py-2 rounded-3xl leading-2'
 					/>
 				</div>
 				<button
