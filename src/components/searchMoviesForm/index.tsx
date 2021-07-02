@@ -39,22 +39,28 @@ const SearchMoviesForm: React.FC = () => {
 	return (
 		<section className='w-screen'>
 			<form onSubmit={onSubmitHandler}>
-				<h1 className='my-4 text-3xl underline text-center w-screen'>
+				<h1 className='my-4 text-3xl underline text-center w-screen text-black'>
 					Movie Search App
 				</h1>
 				<div className='w-screen'>
-					<p className='text-left text-xl mx-12 my-2'>Movie Name</p>
+					<label
+						htmlFor='movieSearchBar'
+						className='text-left mx-12 my-1 text-sm uppercase'
+					>
+						Movie Name
+					</label>
 					<input
+						name='movieSearchBar'
 						type='text'
-						placeholder='Movie Name'
+						placeholder='e.g. Avatar'
 						value={query}
 						onChange={onChangeHandler}
-						className='block w-3/4 mx-auto text-left border-3 border-gray-800 bg-white p-1.5 pl-5 rounded-3xl'
+						className='block w-3/4 mx-auto text-left border-3 border-gray-800 bg-white pl-4 py-2 rounded-3xl leading-2'
 					/>
 				</div>
 				<button
 					type='submit'
-					className='block w-3/4 mx-auto my-4 bg-gray-800 text-white color rounded-3xl p-1.5'
+					className='block w-3/4 mx-auto my-4 bg-black bg-opacity-75 text-white color rounded-3xl p-1.5'
 				>
 					Search
 				</button>

@@ -37,7 +37,9 @@ const FoundMovies: React.FC<Props> = (props) => {
 	function checkPages() {
 		if (results > 20) {
 			const JSXResults: JSX.Element = (
-				<p>Results found: {results}. Only showing the first 20.</p>
+				<p className='text-lg ml-4 -mb-8 text-black text-opacity-75'>
+					Results found: {results}. Only showing the first 20.
+				</p>
 			);
 			return JSXResults;
 		}
@@ -45,7 +47,11 @@ const FoundMovies: React.FC<Props> = (props) => {
 			const JSXResults: JSX.Element = <></>;
 			return JSXResults;
 		}
-		const JSXResults: JSX.Element = <p>Results found: {results}.</p>;
+		const JSXResults: JSX.Element = (
+			<p className='text-lg ml-4 -mb-8 text-black text-opacity-75'>
+				Results found: {results}.
+			</p>
+		);
 		return JSXResults;
 	}
 
@@ -62,15 +68,25 @@ const FoundMovies: React.FC<Props> = (props) => {
 			{movies
 				.filter((movie: Results) => movie.poster_path)
 				.map((movie: Results, index: number) => (
-					<div className={`movie-${index}`} key={movie.id}>
+					<div
+						className={`movie-${index} w-screen p-4 shadow-xl mt-10 bg-white text-black text-opacity-75`}
+						key={movie.id}
+					>
 						<img
 							alt={`${movie.title} poster.`}
 							src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
+							className='mb-4 block m-auto shadow-lg'
 						/>
-						<h1>{movie.title}</h1>
-						<p>Release Date: {formatDate(movie.release_date)}</p>
-						<p>Rating: {movie.vote_average}</p>
-						<p>{movie.overview}</p>
+						<h1 className='mb-4 text-4xl cursor-pointer'>
+							<a href={`https://www.themoviedb.org/movie/${movie.id}`}>
+								{movie.title}
+							</a>
+						</h1>
+						<p className='my-1 text-lg'>
+							Release Date: {formatDate(movie.release_date)}
+						</p>
+						<p className='my-1 text-lg'>Rating: {movie.vote_average}</p>
+						<p className='my-4 text-lg'>{movie.overview}</p>
 					</div>
 				))}
 		</section>

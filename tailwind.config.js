@@ -3,7 +3,7 @@ module.exports = {
 	darkMode: false,
 	theme: {
 		fontFamily: {
-			main: ['Roboto'],
+			main: ['Montserrat'],
 		},
 		extend: {},
 	},
