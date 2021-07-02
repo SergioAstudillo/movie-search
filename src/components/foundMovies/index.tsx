@@ -44,7 +44,11 @@ const FoundMovies: React.FC<Props> = (props) => {
 			return JSXResults;
 		}
 		if (results === 0) {
-			const JSXResults: JSX.Element = <></>;
+			const JSXResults: JSX.Element = (
+				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 lg:block'>
+					No movies found. Check the movie name.
+				</p>
+			);
 			return JSXResults;
 		}
 		const JSXResults: JSX.Element = (
