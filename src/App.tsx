@@ -3,7 +3,7 @@ import './App.css';
 import SearchMoviesForm from './components/searchMoviesForm';
 
 const App: React.FC = () => (
-	<div className='App w-full h-screen bg-gray-100 font-main'>
+	<div className='App w-full h-auto font-main'>
 		<SearchMoviesForm />
 	</div>
 );

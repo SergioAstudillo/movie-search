@@ -1,50 +1,29 @@
-# movie-search
+# <u>Movie Search Web App:</u>
 
 Movie search app that shows coincident movies using the movieDB API, Typescript, React and TailwindCSS.
 
-# Getting Started with Create React App
+### <u>Description:</u>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SPA made to quickly search movies from [TMDb](https://www.themoviedb.org/documentation/api) (The Movie Database).
+It uses [React](https://reactjs.org/) to manipulate the DOM and update it each time a change is detected.
 
-## Available Scripts
+The styling has been done using [TailwindCSS](https://tailwindcss.com/), it's a (mobile first) CSS framework. Thanks to the breakpoints (sm, md, lg, xl, 2xl) that Tailwind offers I made the web fully responsive much faster than with SCSS/CSS.
 
-In the project directory, you can run:
+Everything on the app has been made with [TypeScript](https://www.typescriptlang.org/), an open-source language that lets developers have a better control of their apps.
 
-### `yarn start`
+### <u>How to test/execute the app?:</u>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+First, you must create a .env file in the root of the project, inside this file you should type your TMDb API key using the following format:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+###### `REACT_APP_MOVIE_DB_API_KEY=YOUR_API_KEY`
 
-### `yarn test`
+Once you have set up your API key as a env variable you can execute the following command in the root folder:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###### `yarn start` OR `npm start`
 
-### `yarn build`
+This command runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) once you execute the command to view it in the browser. (It usually opens automatically a new tab in your default browser once you use the command).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### More Info:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<small>This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).</small>
