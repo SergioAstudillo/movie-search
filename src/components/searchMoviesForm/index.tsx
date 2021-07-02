@@ -37,12 +37,12 @@ const SearchMoviesForm: React.FC = () => {
 	}
 
 	return (
-		<section className='w-screen'>
+		<section className='w-full'>
 			<form onSubmit={onSubmitHandler}>
-				<h1 className='my-4 text-3xl underline text-center w-screen text-black'>
+				<h1 className='my-4 text-3xl text-center w-full text-black font-bold underline'>
 					Movie Search App
 				</h1>
-				<div className='w-screen'>
+				<div className='w-full'>
 					<label
 						htmlFor='movieSearchBar'
 						className='text-left mx-12 my-1 text-sm uppercase'
