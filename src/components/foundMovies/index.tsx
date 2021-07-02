@@ -37,7 +37,7 @@ const FoundMovies: React.FC<Props> = (props) => {
 	function checkPages() {
 		if (results > 20) {
 			const JSXResults: JSX.Element = (
-				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75'>
+				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 xl:block'>
 					Results found: {results}. Only showing the first 20.
 				</p>
 			);
@@ -48,7 +48,7 @@ const FoundMovies: React.FC<Props> = (props) => {
 			return JSXResults;
 		}
 		const JSXResults: JSX.Element = (
-			<p className='text-lg mx-4 -mb-8 text-black text-opacity-75'>
+			<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 xl:block'>
 				Results found: {results}.
 			</p>
 		);
@@ -63,32 +63,34 @@ const FoundMovies: React.FC<Props> = (props) => {
 	}
 
 	return (
-		<section>
+		<section className='moviesResults'>
 			{checkPages()}
-			{movies
-				.filter((movie: Results) => movie.poster_path)
-				.map((movie: Results, index: number) => (
-					<div
-						className={`movie-${index} w-full p-4 shadow-xl mt-10 bg-white text-black text-opacity-75`}
-						key={movie.id}
-					>
-						<img
-							alt={`${movie.title} poster.`}
-							src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
-							className='mb-4 block m-auto shadow-lg'
-						/>
-						<h1 className='mb-4 text-4xl cursor-pointer'>
-							<a href={`https://www.themoviedb.org/movie/${movie.id}`}>
-								{movie.title}
-							</a>
-						</h1>
-						<p className='my-1 text-lg'>
-							Release Date: {formatDate(movie.release_date)}
-						</p>
-						<p className='my-1 text-lg'>Rating: {movie.vote_average}</p>
-						<p className='my-4 text-lg'>{movie.overview}</p>
-					</div>
-				))}
+			<section className='movieCards xl:grid xl:grid-flow-row xl:grid-cols-3 xl:gap-4 xl:ml-10 xl:mr-5 xl:my-10'>
+				{movies
+					.filter((movie: Results) => movie.poster_path)
+					.map((movie: Results, index: number) => (
+						<div
+							className={`movie-${index} w-full p-4 shadow-xl mt-10 bg-white text-black text-opacity-75 xl:rounded-2xl xl:mt-0 xl:border xl:border-black xl:border-opacity-25`}
+							key={movie.id}
+						>
+							<img
+								alt={`${movie.title} poster.`}
+								src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
+								className='mb-4 block m-auto shadow-lg'
+							/>
+							<h1 className='mb-4 text-4xl cursor-pointer'>
+								<a href={`https://www.themoviedb.org/movie/${movie.id}`}>
+									{movie.title}
+								</a>
+							</h1>
+							<p className='my-1 text-lg'>
+								Release Date: {formatDate(movie.release_date)}
+							</p>
+							<p className='my-1 text-lg'>Rating: {movie.vote_average}</p>
+							<p className='my-4 text-lg'>{movie.overview}</p>
+						</div>
+					))}
+			</section>
 		</section>
 	);
 };
