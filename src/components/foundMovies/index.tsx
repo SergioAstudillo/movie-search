@@ -37,7 +37,7 @@ const FoundMovies: React.FC<Props> = (props) => {
 	function checkPages() {
 		if (results > 20) {
 			const JSXResults: JSX.Element = (
-				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 xl:block'>
+				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 lg:block'>
 					Results found: {results}. Only showing the first 20.
 				</p>
 			);
@@ -48,7 +48,7 @@ const FoundMovies: React.FC<Props> = (props) => {
 			return JSXResults;
 		}
 		const JSXResults: JSX.Element = (
-			<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 xl:block'>
+			<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 lg:block'>
 				Results found: {results}.
 			</p>
 		);
@@ -65,12 +65,12 @@ const FoundMovies: React.FC<Props> = (props) => {
 	return (
 		<section className='moviesResults'>
 			{checkPages()}
-			<section className='movieCards xl:grid xl:grid-flow-row xl:grid-cols-3 xl:gap-4 xl:ml-10 xl:mr-5 xl:my-10'>
+			<section className='movieCards lg:grid lg:grid-flow-row lg:grid-cols-3 lg:gap-4 lg:ml-10 lg:mr-5 lg:my-10'>
 				{movies
 					.filter((movie: Results) => movie.poster_path)
 					.map((movie: Results, index: number) => (
 						<div
-							className={`movie-${index} w-full p-4 shadow-xl mt-10 bg-white text-black text-opacity-75 xl:rounded-2xl xl:mt-0 xl:border xl:border-black xl:border-opacity-25`}
+							className={`movie-${index} w-full p-4 shadow-xl mt-10 bg-white text-black text-opacity-75 lg:rounded-2xl lg:mt-0 lg:border lg:border-black lg:border-opacity-25`}
 							key={movie.id}
 						>
 							<img

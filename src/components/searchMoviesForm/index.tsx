@@ -55,12 +55,12 @@ const SearchMoviesForm: React.FC = () => {
 						placeholder='e.g. Avatar'
 						value={query}
 						onChange={onChangeHandler}
-						className='w-full mx-auto text-left border-3 border-gray-800 bg-white pl-4 py-2 rounded-3xl leading-2'
+						className='w-full mx-auto text-left border-3 border-black bg-white pl-4 py-2 rounded-3xl leading-2 border-opacity-20 border'
 					/>
 				</div>
 				<button
 					type='submit'
-					className='block w-3/4 mx-auto my-4 bg-black bg-opacity-75 text-white color rounded-3xl p-1.5'
+					className='block w-3/4 mx-auto my-4 bg-black bg-opacity-75 text-white color rounded-3xl p-1.5 lg:w-1/6 lg:text-lg'
 				>
 					Search
 				</button>
