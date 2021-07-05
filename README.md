@@ -16,11 +16,11 @@ Everything on the app has been made using [TypeScript](https://www.typescriptlan
 Use the command **`npm i`** or **`yarn add`** to install all the necessary node modules.
 Then, you must create a .env file in the root of the project. Inside this file you should type your [TMDb API](https://www.themoviedb.org/settings/api) key using the following format:
 
-###### `REACT_APP_MOVIE_DB_API_KEY=YOUR_API_KEY`
+**`REACT_APP_MOVIE_DB_API_KEY=YOUR_API_KEY`**
 
 Once you have set up your API key as a env variable you can execute the following command in the root folder:
 
-###### `yarn start` OR `npm start`
+**`yarn start`** or **`npm start`**
 
 This command runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) once you execute the command to view it in the browser. (It usually opens a new tab automatically in your default browser once you use the command).
