@@ -33,8 +33,9 @@ type Props = {
 
 const FoundMovies: React.FC<Props> = (props) => {
 	const { results, movies, firstSearch } = props;
-	/* This function checks the results. In case the results fills more than a page (20 results) it will tell the user.  */
+	/* This function checks the results. */
 	function checkPages() {
+		// In case the results fills more than a page (20 results) it will tell the user.
 		if (results > 20) {
 			const JSXResults: JSX.Element = (
 				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 lg:block'>
@@ -43,6 +44,7 @@ const FoundMovies: React.FC<Props> = (props) => {
 			);
 			return JSXResults;
 		}
+		// In case there are no results and the user tried to search something.
 		if (results === 0 && !firstSearch) {
 			const JSXResults: JSX.Element = (
 				<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 lg:block'>
@@ -51,10 +53,12 @@ const FoundMovies: React.FC<Props> = (props) => {
 			);
 			return JSXResults;
 		}
+		// In case the user tries to press the "search" button without introducing any name in the input the first time he enters the web.
 		if (results === 0 && firstSearch) {
 			const JSXResults: JSX.Element = <></>;
 			return JSXResults;
 		}
+		// In case there are more than 0 and 20 or less results found.
 		const JSXResults: JSX.Element = (
 			<p className='text-lg mx-4 -mb-8 text-black text-opacity-75 lg:block'>
 				Results found: {results}.
